@@ -1,15 +1,30 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextArea?>
-<BorderPane fx:controller="com.petom.todolist.Controller"
-            xmlns:fx="http://javafx.com/fxml">
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.text.Font?>
+<BorderPane fx:controller="com.petom.todolist.Controller" xmlns:fx="http://javafx.com/fxml">
     <left>
-        <ListView fx:id="todoListView" onMouseClicked="#handleClickListView">
-
-        </ListView>
+<!--        <ListView fx:id="todoListView" onMouseClicked="#handleClickListView"/>-->
+        <ListView fx:id="todoListView"/>
     </left>
     <center>
-        <TextArea fx:id="itemDetailsTextArea"/>
+        <VBox style="-fx-background-color: white">
+            <TextArea fx:id="itemDetailsTextArea" VBox.vgrow="ALWAYS"/>
+            <HBox>
+                <Label text=" Termin: " style="-fx-background-color: white">
+                    <font>
+                        <Font name="Sans Serif" size="12"/>
+                    </font>
+                </Label>
+                <Label fx:id="deadlineLabel" style="-fx-background-color: yellow">
+                    <font>
+                        <Font name="Sans Serif" size="12"/>
+                    </font>
+                </Label>
+            </HBox>
+        </VBox>
     </center>
-
 </BorderPane>
