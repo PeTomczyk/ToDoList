@@ -1,6 +1,7 @@
 package com.petom.todolist.datamodel;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -11,13 +12,13 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Iterator;
-import java.util.List;
 
 public class ToDoData {
     private static ToDoData instance = new ToDoData();
     private static String filename = "ToDoListItems.txt";
 
-    private List<ToDoItem> toDoItems;
+    //    private List<ToDoItem> toDoItems;
+    private ObservableList<ToDoItem> toDoItems;
     private DateTimeFormatter formatter;
 
     public static ToDoData getInstance() {
@@ -28,8 +29,12 @@ public class ToDoData {
         formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     }
 
-    public List<ToDoItem> getToDoItems() {
+    public ObservableList<ToDoItem> getToDoItems() {
         return toDoItems;
+    }
+
+    public void addToDoItem(ToDoItem item) {
+        toDoItems.add(item);
     }
 
 //    public void setToDoItems(List<ToDoItem> toDoItems) {
@@ -84,5 +89,9 @@ public class ToDoData {
                 bw.close();
             }
         }
+    }
+
+    public void deleteToDoItem(ToDoItem item) {
+        toDoItems.remove(item);
     }
 }

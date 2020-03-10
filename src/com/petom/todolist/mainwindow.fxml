@@ -1,25 +1,65 @@
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<BorderPane fx:controller="com.petom.todolist.Controller" xmlns:fx="http://javafx.com/fxml">
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:id="mainBorderPane" fx:controller="com.petom.todolist.Controller">
+    <top>
+        <VBox>
+            <MenuBar>
+                <Menu text="File">
+                    <items>
+                        <MenuItem text="New..." onAction="#showNewItemDialog">
+                            <graphic>
+                                <ImageView>
+                                    <Image url="@/toolbarButtonGraphics/general/New24.gif"/>
+                                </ImageView>
+                            </graphic>
+                        </MenuItem>
+                        <SeparatorMenuItem/>
+                        <MenuItem text="Exit" onAction="#handleExit"/>
+                    </items>
+                </Menu>
+            </MenuBar>
+            <ToolBar>
+                <HBox>
+                    <Button onAction="#showNewItemDialog">
+                        <tooltip>
+                            <Tooltip text="Add a New ToDo item"/>
+                        </tooltip>
+                        <graphic>
+                            <ImageView>
+                                <Image url="@/toolbarButtonGraphics/general/New24.gif"/>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <ToggleButton fx:id="filterToggleButton" text="Today's Items" onAction="#handleFilterButton">
+                        <tooltip>
+                            <Tooltip text="Display today's items"/>
+                        </tooltip>
+                        <graphic>
+                            <ImageView>
+                                <Image url="@/toolbarButtonGraphics/general/History24.gif"/>
+                            </ImageView>
+                        </graphic>
+                    </ToggleButton>
+                </HBox>
+            </ToolBar>
+        </VBox>
+    </top>
     <left>
-<!--        <ListView fx:id="todoListView" onMouseClicked="#handleClickListView"/>-->
-        <ListView fx:id="todoListView"/>
+        <!--        <ListView fx:id="todoListView" onMouseClicked="#handleClickListView"/>-->
+        <ListView fx:id="todoListView" onKeyPressed="#handleKeyPressed"/>
     </left>
     <center>
         <VBox style="-fx-background-color: white">
-            <TextArea fx:id="itemDetailsTextArea" VBox.vgrow="ALWAYS"/>
+            <TextArea fx:id="itemDetailsTextArea" VBox.vgrow="ALWAYS" wrapText="true"/>
             <HBox>
-                <Label text=" Termin: " style="-fx-background-color: white">
+                <Label text=" Due date: " style="-fx-background-color: white">
                     <font>
                         <Font name="Sans Serif" size="12"/>
                     </font>
                 </Label>
-                <Label fx:id="deadlineLabel" style="-fx-background-color: yellow">
+                <Label fx:id="deadlineLabel" style="-fx-background-color: white">
                     <font>
                         <Font name="Sans Serif" size="12"/>
                     </font>
