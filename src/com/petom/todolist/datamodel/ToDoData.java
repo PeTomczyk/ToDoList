@@ -37,6 +37,9 @@ public class ToDoData {
         toDoItems.add(item);
     }
 
+    public void deleteToDoItem(ToDoItem item) {
+        toDoItems.remove(item);
+    }
 //    public void setToDoItems(List<ToDoItem> toDoItems) {
 //        this.toDoItems = toDoItems;
 //    }
@@ -89,9 +92,5 @@ public class ToDoData {
                 bw.close();
             }
         }
-    }
-
-    public void deleteToDoItem(ToDoItem item) {
-        toDoItems.remove(item);
     }
 }
